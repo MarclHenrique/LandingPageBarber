@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing page moderna para barbearia com agendamento online.">
+  <title>Barbearia Estilo</title>
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+ <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#testemunhos">Testemunhos</a></li>
+          <li><a href="#contato">Agendar Corte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="banner">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('assets/barba.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/corte.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/corte2.jpg');"></div>
+      </div>
+      <!-- Paginação do Swiper -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+  
+
+  <!-- Sobre -->
+  <section id="sobre" data-aos="fade-up">
+    <h2>Sobre Nós</h2>
+    <p>Na Barbearia Estilo, oferecemos o melhor em cortes de cabelo e barba, com um atendimento de excelência que valoriza o seu estilo único.</p>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos" data-aos="fade-up">
+    <h2>Nossos Serviços</h2>
+    <div class="servicos-container">
+      <div class="card">
+        <h3>Corte de Cabelo</h3>
+        <p>Do clássico ao moderno, temos o corte ideal para você.</p>
+      </div>
+      <div class="card">
+        <h3>Barba</h3>
+        <p>Modelagem e aparo profissional com atenção aos detalhes.</p>
+      </div>
+      <div class="card">
+        <h3>Relaxamento</h3>
+        <p>Tratamentos que deixam seu cabelo ainda mais estiloso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testemunhos -->
+  <section id="testemunhos" data-aos="fade-up">
+    <h2>O que nossos clientes dizem</h2>
+    <div class="testemunhos-container">
+      <div class="testemunho">
+        <p>"O melhor corte que já tive! Profissionais excelentes."</p>
+        <h4>João Silva</h4>
+      </div>
+      <div class="testemunho">
+        <p>"Atendimento impecável e ambiente muito agradável."</p>
+        <h4>Marcos Oliveira</h4>
+      </div>
+      <div class="testemunho">
+        <p>"A barbearia é incrível! Sempre saio satisfeito."</p>
+        <h4>Lucas Santos</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agendamento -->
+  <section id="contato">
+    <h2>Agende seu Corte</h2>
+    <form id="form-agendamento">
+      <input type="text" name="nome" placeholder="Seu Nome" required>
+      <input type="email" name="email" placeholder="Seu Email" required>
+      <input type="tel" name="telefone" placeholder="Seu Telefone" required>
+      <input type="date" name="data" required>
+      <select name="servico" required>
+        <option value="" disabled selected>Selecione o Serviço</option>
+        <option value="Corte de Cabelo">Corte de Cabelo</option>
+        <option value="Barba">Barba</option>
+        <option value="Relaxamento">Relaxamento</option>
+      </select>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Barbearia Estilo. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
