@@ -1,30 +1,39 @@
-// Inicializar EmailJS
-emailjs.init('SEU_USER_ID'); // Insira o User ID gerado pelo EmailJS
-
-const form = document.getElementById('form-agendamento');
-
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const serviceID = 'seu_service_id';
-  const templateID = 'seu_template_id';
-
-  emailjs.sendForm(serviceID, templateID, this).then(
-    () => alert('Agendamento enviado com sucesso!'),
-    (err) => alert('Erro ao enviar agendamento. Tente novamente.')
-  );
-});
-
-// Inicialização do Swiper.js
-const swiper = new Swiper('.swiper-container', {
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
     loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  });
+    grabCursor: true,
+    parallax: true,
+    speed: 800,
+    
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
   
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+  
+    
+  });
+
+ // Inicializa o EmailJS com seu User ID
+ (function() {
+    emailjs.init("YvEFHdD7cwdwYiPsm"); // Substitua pelo seu User ID
+  })();
+
+  // Envia o formulário
+  document.getElementById('form-agendamento').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita o envio padrão do formulário
+
+    // Envia o formulário usando o EmailJS
+    emailjs.sendForm('service_l2qdt5f', 'template_2gtpc15', this) // Substitua pelos seus IDs
+      .then(function(response) {
+        alert('Agendamento enviado com sucesso!');
+        document.getElementById('form-agendamento').reset(); // Limpa o formulário
+      }, function(error) {
+        alert('Erro ao enviar o agendamento. Tente novamente.');
+      });
+  });

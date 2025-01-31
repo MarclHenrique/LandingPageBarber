@@ -1,4 +1,4 @@
-/* Reset básico */
+Reset básico
 * {
     margin: 0;
     padding: 0;
@@ -71,15 +71,17 @@
     height: 60vh;
     position: relative;
   }
-  
-  .swiper-container {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .swiper-slide {
-    background-size: cover;
-    background-position: center;
+
+  .swiper {
+    width: 80%;
+    height: 800px;   
+     .swiper-slide {
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+    }
   }
   
   /* Sobre */
@@ -138,39 +140,57 @@
   }
   
   /* Testemunhos */
-  #testemunhos {
-    text-align: center;
-    padding: 50px 20px;
-  }
-  
-  #testemunhos h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .testemunhos-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .testemunho {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .testemunho p {
-    font-style: italic;
-    color: #555;
-  }
-  
-  .testemunho h4 {
-    margin-top: 10px;
-    color: #111;
-    font-weight: bold;
-  }
+/* Estilos para a seção de testemunhos */
+#testemunhos {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+#testemunhos h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.testemunhos-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.testemunho {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.testemunho-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.testemunho p {
+  font-size: 1em;
+  color: #666;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.testemunho h4 {
+  font-size: 1.2em;
+  color: #333;
+  font-weight: bold;
+}
+
   
   /* Agendamento */
   #contato {

@@ -7,11 +7,8 @@
   <title>Barbearia Estilo</title>
   <!-- Estilos -->
   <link rel="stylesheet" href="styles.css">
- <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 </head>
 <body>
@@ -29,23 +26,33 @@
     </div>
   </header>
 
-  <section class="banner">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('assets/barba.jpg');"></div>
-        <div class="swiper-slide" style="background-image: url('assets/corte.jpg');"></div>
-        <div class="swiper-slide" style="background-image: url('assets/corte2.jpg');"></div>
-      </div>
-      <!-- Paginação do Swiper -->
-      <div class="swiper-pagination"></div>
+  <!-- Slider main container -->
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide" style="background-image: url(assets/barba.jpg);"></div>
+      <div class="swiper-slide" style="background-image: url(assets/corte2.jpg);"></div>
+      <div class="swiper-slide" style="background-image: url(assets/corte.jpg);"></div>
+      ...
     </div>
-  </section>
-  
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+
+  </div>
+
 
   <!-- Sobre -->
   <section id="sobre" data-aos="fade-up">
     <h2>Sobre Nós</h2>
-    <p>Na Barbearia Estilo, oferecemos o melhor em cortes de cabelo e barba, com um atendimento de excelência que valoriza o seu estilo único.</p>
+    <p>Na Barbearia Estilo, oferecemos o melhor em cortes de cabelo e barba, com um atendimento de excelência que
+      valoriza o seu estilo único.</p>
   </section>
 
   <!-- Serviços -->
@@ -67,24 +74,30 @@
     </div>
   </section>
 
-  <!-- Testemunhos -->
-  <section id="testemunhos" data-aos="fade-up">
-    <h2>O que nossos clientes dizem</h2>
-    <div class="testemunhos-container">
-      <div class="testemunho">
-        <p>"O melhor corte que já tive! Profissionais excelentes."</p>
-        <h4>João Silva</h4>
-      </div>
-      <div class="testemunho">
-        <p>"Atendimento impecável e ambiente muito agradável."</p>
-        <h4>Marcos Oliveira</h4>
-      </div>
-      <div class="testemunho">
-        <p>"A barbearia é incrível! Sempre saio satisfeito."</p>
-        <h4>Lucas Santos</h4>
-      </div>
+   <!-- Testemunhos -->
+<section id="testemunhos" data-aos="fade-up">
+  <h2>O que nossos clientes dizem</h2>
+  <div class="testemunhos-container">
+    <!-- Testemunho 1 -->
+    <div class="testemunho">
+      <img src="assets/joao.webp"Foto de João Silva" class="testemunho-img">
+      <p>"O melhor corte que já tive! Profissionais excelentes."</p>
+      <h4>João Silva</h4>
     </div>
-  </section>
+    <!-- Testemunho 2 -->
+    <div class="testemunho">
+      <img src="assets/marcos.webp" alt="Foto de Marcos Oliveira" class="testemunho-img">
+      <p>"Atendimento impecável e ambiente muito agradável."</p>
+      <h4>Marcos Oliveira</h4>
+    </div>
+    <!-- Testemunho 3 -->
+    <div class="testemunho">
+      <img src="assets/lucas.webp" alt="Foto de Lucas Santos" class="testemunho-img">
+      <p>"A barbearia é incrível! Sempre saio satisfeito."</p>
+      <h4>Lucas Santos</h4>
+    </div>
+  </div>
+</section>
 
   <!-- Agendamento -->
   <section id="contato">
@@ -110,8 +123,11 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+
   <script src="script.js"></script>
 </body>
 </html>
