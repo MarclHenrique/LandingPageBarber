@@ -5,131 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Landing page moderna para barbearia com agendamento online.">
   <title>Barbearia Estilo</title>
-  <!-- Estilos -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container">
+      <!-- Navegação -->
       <nav>
         <ul>
           <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#testemunhos">Testemunhos</a></li>
-          <li><a href="#contato">Agendar Corte</a></li>
+          <li><a href="#funcionalidades">Funcionalidades</a></li>
+          <li><a href="#como-comecar">Como Começar</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#agendamento">Agende seu corte</a></li>
         </ul>
       </nav>
+      <!-- Botões de login e cadastro no canto direito -->
+      <div class="auth-buttons">
+        <a href="#cadastro" class="btn-auth">Cadastro</a>
+        <a href="#login" class="btn-auth">Login</a>
+      </div>
     </div>
   </header>
+  
 
-  <!-- Slider main container -->
+  <!-- Slider -->
   <div class="swiper">
-    <!-- Additional required wrapper -->
-
     <div class="swiper-wrapper">
-      <!-- Slides -->
-      <div class="swiper-slide" style="background-image: url(assets/barba.jpg);"></div>
-      <div class="swiper-slide" style="background-image: url(assets/corte2.jpg);"></div>
-      <div class="swiper-slide" style="background-image: url(assets/corte.jpg);"></div>
-      ...
+      <div class="swiper-slide" style="background-image: url('assets/barba.jpg');">
+        <div class="cta">
+          <h2>Transforme seu Estilo com o Melhor Corte</h2>
+          <p>Cadastre-se e agende seu corte de cabelo com os melhores barbeiros da cidade.</p>
+          <a href="#cadastro" class="btn-cta">Agende Agora</a>
+        </div>
+      </div>
+      <div class="swiper-slide" style="background-image: url('assets/corte.jpg');">
+        <div class="cta">
+          <h2>Seja um Barbeiro Parceiro</h2>
+          <p>Cadastre-se como barbeiro e aumente sua clientela com agendamentos online.</p>
+          <a href="#cadastro" class="btn-cta">Cadastre-se Agora</a>
+        </div>
+        <div class="swiper-slide" style="background-image: url('assets/corte2.jpg');">
+          <div class="cta">
+            <h2>Faça Login e Gerencie Seus Agendamentos</h2>
+            <p>Entre no sistema para acessar sua agenda, visualizar clientes e gerenciar seus serviços. É rápido e fácil!</p>
+            <a href="#login" class="btn-cta">Entrar no Sistema</a>
+          </div>
+        </div>
+        
+      </div>
     </div>
-    <!-- If we need pagination -->
     <div class="swiper-pagination"></div>
-
-    <!-- If we need navigation buttons -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
-
-
   </div>
 
   <!-- Sobre -->
   <section id="sobre" data-aos="fade-up">
-    <h2>Sobre Nós</h2>
-    <p>Na Barbearia Estilo, oferecemos o melhor em cortes de cabelo e barba, com um atendimento de excelência que
-      valoriza o seu estilo único.</p>
+    <h2>Sobre o Sistema</h2>
+    <p>O nosso sistema facilita o agendamento online para barbearias, otimizando a gestão e oferecendo mais comodidade aos clientes.</p>
   </section>
 
-  <!-- Serviços -->
-  <section id="servicos" data-aos="fade-up">
-    <h2>Nossos Serviços</h2>
-    <div class="servicos-container">
-      <div class="card">
-        <h3>Corte de Cabelo</h3>
-        <p>Do clássico ao moderno, temos o corte ideal para você.</p>
+  <!-- Funcionalidades -->
+  <section id="funcionalidades" data-aos="fade-up">
+    <h2>Funcionalidades</h2>
+    <div class="funcionalidades-container">
+      <div class="funcionalidade">
+        <h3>Agendamentos Online</h3>
+        <p>Permite que os clientes agendem horários diretamente pela plataforma.</p>
       </div>
-      <div class="card">
-        <h3>Barba</h3>
-        <p>Modelagem e aparo profissional com atenção aos detalhes.</p>
+      <div class="funcionalidade">
+        <h3>Gestão de Clientes</h3>
+        <p>Controle completo do histórico de clientes, serviços e pagamentos.</p>
       </div>
-      <div class="card">
-        <h3>Relaxamento</h3>
-        <p>Tratamentos que deixam seu cabelo ainda mais estiloso.</p>
+      <div class="funcionalidade">
+        <h3>Relatórios Gerenciais</h3>
+        <p>Relatórios detalhados sobre agendamentos e faturamento.</p>
       </div>
     </div>
   </section>
 
-  <!-- Testemunhos -->
   <section id="testemunhos" data-aos="fade-up">
     <h2>O que nossos clientes dizem</h2>
     <div class="testemunhos-container">
       <!-- Testemunho 1 -->
       <div class="testemunho">
-        <img src="assets/joao.webp" Foto de João Silva" class="testemunho-img">
-        <p>"O melhor corte que já tive! Profissionais excelentes."</p>
+        <img src="assets/joao.webp" alt="foto de João Silva" class="testemunho-img">
+        <p>"A plataforma me ajudou a encontrar o barbeiro perfeito para o meu estilo, sempre agendo com facilidade e rapidez!."</p>
         <h4>João Silva</h4>
       </div>
       <!-- Testemunho 2 -->
       <div class="testemunho">
         <img src="assets/marcos.webp" alt="Foto de Marcos Oliveira" class="testemunho-img">
-        <p>"Atendimento impecável e ambiente muito agradável."</p>
+        <p>"Os barbeiros do sistema são incríveis! Consigo agendar com quem quero, e sempre recebo um atendimento de qualidade."</p>
         <h4>Marcos Oliveira</h4>
       </div>
       <!-- Testemunho 3 -->
       <div class="testemunho">
         <img src="assets/lucas.webp" alt="Foto de Lucas Santos" class="testemunho-img">
-        <p>"A barbearia é incrível! Sempre saio satisfeito."</p>
+        <p>"Adoro poder escolher meu barbeiro, ver avaliações e agendar sem complicação. O sistema é perfeito!"</p>
         <h4>Lucas Santos</h4>
       </div>
     </div>
   </section>
 
-  <!-- Agendamento -->
-  <section id="contato">
-    <h2>Agende seu Corte</h2>
-    <form id="form-agendamento">
+  <!-- Como Começar -->
+  <section id="como-comecar" data-aos="fade-up">
+    <h2>Como Começar</h2>
+    <div class="como-comecar-container">
+      <div class="passo">
+        <h3>1. Faça o Cadastro</h3>
+        <p>Cadastre sua barbearia informando os dados básicos.</p>
+      </div>
+      <div class="passo">
+        <h3>2. Preencha os Detalhes</h3>
+        <p>Adicione serviços, profissionais e horários.</p>
+      </div>
+      <div class="passo">
+        <h3>3. Teste Gratuito</h3>
+        <p>Experimente todas as funcionalidades por 30 dias.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" data-aos="fade-up">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <h4>Não possuo CNPJ. Posso utilizar o sistema?</h4>
+        <p>Sim, você pode usar o sistema tanto como pessoa física quanto jurídica.</p>
+      </div>
+      <div class="faq-item">
+        <h4>O período gratuito possui alguma limitação?</h4>
+        <p>Não, durante o teste você tem acesso a todas as funcionalidades do sistema.</p>
+      </div>
+      <div class="faq-item">
+        <h4>O cliente precisa pagar para usar o aplicativo?</h4>
+        <p>Não, o aplicativo é gratuito para iOS e Android.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" data-aos="fade-up">
+    <h2>Entre em Contato</h2>
+    <form id="form-contato">
       <input type="text" name="nome" placeholder="Seu Nome" required>
       <input type="email" name="email" placeholder="Seu Email" required>
-      <input type="tel" name="telefone" placeholder="Seu Telefone" required>
-      <input type="date" name="data" required>
-      <select name="servico" required>
-        <option value="" disabled selected>Selecione o Serviço</option>
-        <option value="Corte de Cabelo">Corte de Cabelo</option>
-        <option value="Barba">Barba</option>
-        <option value="Relaxamento">Relaxamento</option>
-      </select>
+      <textarea name="mensagem" placeholder="Sua Mensagem" required></textarea>
       <button type="submit" class="btn">Enviar</button>
     </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Barbearia Estilo. Todos os direitos reservados.</p>
+    <p>© 2023 Barbearia Estilo. Todos os direitos reservados.</p>
   </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
   <script src="script.js"></script>
 </body>
 </html>
