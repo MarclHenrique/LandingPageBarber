@@ -131,6 +131,26 @@ header nav ul li a:hover {
   background-color: #c1351d;
 }
 
+/* Botão Sair */
+.logout .btn-logout {
+  background-color: #d9534f; /* Vermelho */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block; /* Remove sublinhado de link */
+}
+
+.logout .btn-logout:hover {
+  background-color: #c9302c; /* Vermelho mais escuro */
+  color: white;
+  text-decoration: none; /* Remove sublinhado no hover */
+}
+
 /* Footer */
 footer {
   background-color: #111;
