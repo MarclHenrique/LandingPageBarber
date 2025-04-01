@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agende seu corte de cabelo com o barbeiro disponível.">
+    <title>Agendar Corte</title>
+    <link rel="stylesheet" href="css/agendamento.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="auth-buttons">
+                <a href="dashboardUser.html" class="btn-auth">Meu Perfil</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Agendamento -->
+    <section id="agendamentos">
+        <h2>Agende seu Corte</h2>
+        <form id="agendamento-form">
+            <label for="barbeiro">Escolha o Barbeiro:</label>
+            <select name="barbeiro_id" id="barbeiro" required>
+                <option value="1">João Silva</option>
+                <option value="2">Marcos Oliveira</option>
+                <option value="3">Lucas Santos</option>
+            </select>
+        
+            <label for="data">Escolha a Data:</label>
+            <input type="date" id="data" name="data" required>
+        
+            <label for="hora">Escolha a Hora:</label>
+            <input type="time" id="hora" name="hora" required>
+        
+            <label for="servicos">Digite os Serviços (separados por vírgula):</label>
+            <textarea name="servicos" id="servicos" rows="4" required placeholder="Ex: Corte de Cabelo, Barba, Coloracao"></textarea>
+
+        
+            <button type="submit">Agendar Corte</button>
+        </form>
+        
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2023 Barbearia Estilo. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

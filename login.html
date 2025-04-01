@@ -1,20 +1,64 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página de login para o sistema de agendamento online da barbearia.">
+  <title>Login - Barbearia Estilo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/stylesLogin.css">
 </head>
 <body>
-    <h2>Login</h2>
-    <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Email" required>
-        <input type="password" id="loginSenha" placeholder="Senha" required>
-        <button type="submit">Entrar</button>
-    </form>
-    <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
-    <script src="js/auth.js"></script>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <!-- Navegação -->
+      <nav>
+        <ul>
+          <li><a href="index.html" class="home">Home</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#funcionalidades">Funcionalidades</a></li>
+          <li><a href="#como-comecar">Como Começar</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <!-- Botões de login e cadastro no canto direito -->
+      <div class="auth-buttons">
+        <a href="cadastro.html" class="btn-auth">Cadastro</a>
+        <a href="login.html" class="btn-auth">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Container de Login -->
+  <div class="login-container">
+    <div class="login-content">
+      <div class="login-image">
+        <img src="assets/corte2.jpg" alt="Imagem do salão de barbearia" />
+      </div>
+      <div class="login-form">
+        <h2>Já é cliente? Acesse sua conta</h2>
+        <form action="home.html" method="get">
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="senha" placeholder="Senha" required>
+          <button type="submit" class="btn-login">Entrar</button>
+        </form>
+        <p><a href="#">Esqueceu sua senha?</a> | <a href="cadastro.html">Criar conta</a></p>
+        <div class="login-options">
+          <p>Ou acesse com</p>
+          <button class="btn-google">Google</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2023 Barbearia Estilo. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

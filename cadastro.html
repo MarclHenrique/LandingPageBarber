@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastro de usuário para barbearia.">
+    <title>Cadastro - Barbearia Estilo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesCadastro.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#funcionalidades">Funcionalidades</a></li>
+          <li><a href="#como-comecar">Como Começar</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn-auth">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="login-container">
+    <div class="login-content">
+    
+      <div class="login-form">
+        <h2>Cadastro de Usuário</h2>
+        <form action="submit_form.php" method="POST" id="formCadastro">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required>
+          </div>
+          <div class="form-group">
+            <label for="tipo">Tipo de Usuário</label>
+            <select id="tipo" name="tipo" onchange="showBarbeiroFields()" required>
+              <option value="cliente">Cliente</option>
+              <option value="barbeiro">Barbeiro</option>
+            </select>
+          </div>
+
+          <!-- Campos exclusivos para barbeiro -->
+          <div id="barbeiroFields" style="display: none;">
+            <div class="form-group">
+              <label for="especialidades">Especialidades</label>
+              <input type="text" id="especialidades" name="especialidades" placeholder="Ex: Corte, Barba, etc." required>
+            </div>
+            <div class="form-group">
+              <label for="atende_domicilio">Atende a Domicílio?</label>
+              <select id="atende_domicilio" name="atende_domicilio">
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="servicos">Serviços Oferecidos</label>
+              <input type="text" id="servicos" name="servicos" placeholder="Ex: Corte, Barba, etc." required>
+            </div>
+            <div class="form-group">
+              <label for="localizacao">Localização</label>
+              <input type="text" id="localizacao" name="localizacao" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn-login">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2023 Barbearia Estilo. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // Função para mostrar ou esconder os campos adicionais para barbeiro
+    function showBarbeiroFields() {
+      const tipo = document.getElementById('tipo').value;
+      const barbeiroFields = document.getElementById('barbeiroFields');
+      if (tipo === 'barbeiro') {
+        barbeiroFields.style.display = 'block';
+      } else {
+        barbeiroFields.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

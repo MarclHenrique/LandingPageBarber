@@ -1,0 +1,160 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body */
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    margin: 0;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #111;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #f4b400;
+}
+
+/* Agendamento */
+#agendamentos {
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#agendamentos h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+input, select, button {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: #fff;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: 1.1rem; 
+  }
+  
+  .btn-auth {
+    background-color: #007bff; 
+    color: #fff; 
+    font-weight: bold; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+  }
+  
+  .btn-auth:hover {
+    background-color: #0056b3; 
+    transform: translateY(-3px); 
+  }
+  
+  .btn-auth:active {
+    transform: translateY(0); 
+  }
+  
+  .btn-logout {
+    background-color: #ff4747; 
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn-logout:hover {
+    background-color: #e63946; 
+    transform: translateY(-3px); 
+  }
+  
+  .btn-logout:active {
+    transform: translateY(0); 
+  }
+  
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #agendamentos {
+        padding: 30px 15px;
+    }
+}
