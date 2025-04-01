@@ -1,12 +1,3 @@
-<!-- No topo de dashboardUser.html -->
-<script>
-    const user = JSON.parse(localStorage.getItem('user'));
-    
-    if (!user || user.type !== 'client') {
-      window.location.href = 'login.html';
-    }
-</script>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -18,7 +9,13 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Header Fixo -->
+    <script>
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user || user.type !== 'client') {
+            window.location.href = 'login.html';
+        }
+    </script>
+
     <header>
         <nav>
             <ul>
@@ -41,7 +38,6 @@
         </div>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main class="main-content">
         <section id="barbeiros">
             <h2>Barbeiros Disponíveis</h2>
@@ -51,20 +47,21 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>© 2023 Barbearia Estilo. Todos os direitos reservados.</p>
     </footer>
 
     <script>
-        // Função de logout
         function logout() {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             window.location.href = 'index.html';
         }
 
-        // Carregar dados do usuário
+        function agendarBarbeiro() {
+            window.location.href = 'agendamentos.html';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const user = JSON.parse(localStorage.getItem('user'));
             if (user) {
@@ -74,69 +71,57 @@
                 }
             }
 
-            // Adicionar evento de logout
-            document.querySelector('.btn-logout').addEventListener('click', function(e) {
+            document.querySelector('.btn-logout').addEventListener('click', (e) => {
                 e.preventDefault();
                 logout();
             });
         });
 
-        // Carregar barbeiros
         async function loadBarbeiros() {
             try {
                 const response = await fetch('https://apibarberamtil.onrender.com/api/barbeiros');
-                
-                // Verificar se a resposta é JSON
-                const contentType = response.headers.get('content-type');
-                if (!contentType || !contentType.includes('application/json')) {
-                    throw new Error('Resposta inválida do servidor');
-                }
-
                 const barbeiros = await response.json();
-
-                if (!response.ok) throw new Error(barbeiros.message || 'Erro ao carregar barbeiros');
 
                 const container = document.getElementById('barbeirosContainer');
                 container.innerHTML = '';
 
                 barbeiros.forEach(barbeiro => {
-                    const card = document.createElement('div');
-                    card.className = 'barbeiro-card';
-                    card.innerHTML = `
-                        <img src="${barbeiro.foto_perfil || 'assets/default-barber.jpg'}" 
-                             alt="${barbeiro.nome}" 
-                             class="barbeiro-img">
-                        <h3>${barbeiro.nome}</h3>
-                        <p>Especialidade: ${barbeiro.especialidades?.join(', ') || 'Nenhuma'}</p>
-                        <p>Atende a Domicílio: ${barbeiro.atende_domicilio ? 'Sim' : 'Não'}</p>
-                        <p>Serviços: ${barbeiro.servicos_oferecidos?.join(', ') || 'Nenhum'}</p>
-                        <p>Localização: ${barbeiro.localizacao || 'Não informada'}</p>
-                        <button class="btn-cta" onclick="agendarBarbeiro('${barbeiro.id}')">
-                            Agendar Corte
-                        </button>
-                        <a href="https://www.google.com/maps?q=${encodeURIComponent(barbeiro.localizacao)}" 
-                           class="btn-location" 
-                           target="_blank">
-                            Ver Localização
-                        </a>
+                    const card = `
+                        <div class="barbeiro-card">
+                            <img src="${barbeiro.foto_perfil || 'assets/default-barber.jpg'}" 
+                                 class="barbeiro-img">
+                            <div class="barbeiro-info">
+                                <h3>${barbeiro.nome}</h3>
+                                <p>✂️ Especialidades: ${barbeiro.especialidades?.join(', ') || 'Nenhuma'}</p>
+                                <p>🏠 Atende em casa: ${barbeiro.atende_domicilio ? 'Sim' : 'Não'}</p>
+                                <p>💈 Serviços: ${barbeiro.servicos_oferecidos?.join(', ') || 'Nenhum'}</p>
+                                <p>📍 Localização: ${barbeiro.localizacao || 'Não informada'}</p>
+                                <div class="barbeiro-actions">
+                                    <button class="btn-cta" onclick="agendarBarbeiro()">
+                                        Agendar Corte
+                                    </button>
+                                    <a href="https://www.google.com/maps?q=${encodeURIComponent(barbeiro.localizacao)}" 
+                                       class="btn-location" 
+                                       target="_blank">
+                                        Ver no Mapa
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     `;
-                    container.appendChild(card);
+                    container.insertAdjacentHTML('beforeend', card);
                 });
 
             } catch (error) {
-                document.getElementById('barbeirosContainer').innerHTML = `
-                    <div class="error">Erro: ${error.message}</div>
+                container.innerHTML = `
+                    <div class="error">
+                        <p>😕 Ocorreu um erro ao carregar os barbeiros</p>
+                        <p>${error.message}</p>
+                    </div>
                 `;
-                console.error('Erro ao carregar barbeiros:', error);
             }
         }
 
-        function agendarBarbeiro(barbeiroId) {
-            localStorage.setItem('selectedBarber', barbeiroId);
-            window.location.href = 'agendamento.html';
-        }
-
-        // Iniciar carregamento
         loadBarbeiros();
     </script>
 </body>

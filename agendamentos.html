@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="css/agendamento.css">
 </head>
 <body>
+    <script>
+        // Verificação de login
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user || user.type !== 'client') {
+            window.location.href = 'login.html';
+        }
+    </script>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -34,10 +42,8 @@
             <label for="servicos">Digite os Serviços (separados por vírgula):</label>
             <textarea name="servicos" id="servicos" rows="4" required placeholder="Ex: Corte de Cabelo, Barba, Coloracao"></textarea>
 
-        
             <button type="submit">Agendar Corte</button>
         </form>
-        
     </section>
 
     <!-- Footer -->
@@ -45,6 +51,48 @@
         <p>© 2023 Barbearia Estilo. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Pré-selecionar barbeiro
+        document.addEventListener('DOMContentLoaded', () => {
+            const barbeiroId = localStorage.getItem('selectedBarber');
+            if (barbeiroId) {
+                document.getElementById('barbeiro').value = barbeiroId;
+                localStorage.removeItem('selectedBarber');
+            }
+        });
+
+        // Envio do formulário
+        document.getElementById('agendamento-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                barbeiro_id: document.getElementById('barbeiro').value,
+                dataHora: document.getElementById('dataHora').value,
+                servicos: document.getElementById('servicos').value.split(',').map(s => s.trim())
+            };
+
+            try {
+                const response = await fetch('https://apibarberamtil.onrender.com/api/agendamentos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Agendamento realizado com sucesso!');
+                    window.location.href = 'dashboardUser.html';
+                } else {
+                    const error = await response.json();
+                    alert(`Erro: ${error.message}`);
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao realizar agendamento');
+            }
+        });
+    </script>
 </body>
 </html>
