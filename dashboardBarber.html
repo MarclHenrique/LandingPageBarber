@@ -1,3 +1,10 @@
+<script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    
+    if (!user || user.type !== 'barber') {
+      window.location.href = 'login.html';
+    }
+  </script>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

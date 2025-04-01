@@ -1,3 +1,12 @@
+<!-- No topo de dashboardUser.html -->
+<script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    
+    if (!user || user.type !== 'client') {
+      window.location.href = 'login.html';
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,84 +18,113 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header Fixo -->
     <header>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="home">Home</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#funcionalidades">Funcionalidades</a></li>
-                    <li><a href="#como-comecar">Como Começar</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
-
-        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#funcionalidades">Funcionalidades</a></li>
+                <li><a href="#como-comecar">Como Começar</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
         <div class="profile-section">
             <div class="profile-info">
-                <img src="assets/barba.jpg"Foto de Perfil class="profile-img">
-                <h3>João Santos</h3>
+                <img src="assets/barba.jpg" alt="Foto de Perfil" class="profile-img" id="profileImage">
+                <h3 id="userName">Carregando...</h3>
             </div>
             <div class="logout">
                 <a href="logout.html" class="btn-logout">Sair</a>
             </div>
         </div>
-        
     </header>
 
-    <!-- Página de Barbeiros -->
-    <section id="barbeiros">
-        <h2>Barbeiros Disponíveis</h2>
-        <div class="barbeiros-list">
-            <!-- Exemplo de Barbeiro 1 -->
-            <div class="barbeiro-card">
-                <img src="assets/corte.jpg" alt="Barbeiro João" class="barbeiro-img">
-                <h3>João Silva</h3>
-                <p>Especialidade: Corte Masculino</p>
-                <p>Atende a Domicílio: Sim</p>
-                <p>Avaliação: 4.5/5</p>
-                <p>Serviços: Corte, Barba, Sobrancelhas</p>
-                <p>Localização: São Paulo - SP</p>
-                <a href="agendamentos.html" class="btn-cta">Agendar Corte</a>
-                <a href="https://www.google.com/maps?q=São+Paulo,+SP" class="btn-location" target="_blank">Ver Localização</a>
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <section id="barbeiros">
+            <h2>Barbeiros Disponíveis</h2>
+            <div class="barbeiros-list" id="barbeirosContainer">
+                <div class="loading">Carregando barbeiros...</div>
             </div>
-
-            <!-- Exemplo de Barbeiro 2 -->
-            <div class="barbeiro-card">
-                <img src="assets/barbeiro2.jpg" alt="Barbeiro Marcos" class="barbeiro-img">
-                <h3>Marcos Oliveira</h3>
-                <p>Especialidade: Corte de Cabelo e Barba</p>
-                <p>Atende a Domicílio: Não</p>
-                <p>Avaliação: 4.8/5</p>
-                <p>Serviços: Corte, Barba, Colorimetria</p>
-                <p>Localização: Rio de Janeiro - RJ</p>
-                <a href="#agendar" class="btn-cta">Agendar Corte</a>
-                <a href="https://www.google.com/maps?q=Rio+de+Janeiro,+RJ" class="btn-location" target="_blank">Ver Localização</a>
-            </div>
-
-            <!-- Exemplo de Barbeiro 3 -->
-            <div class="barbeiro-card">
-                <img src="assets/barbeiro3.jpg" alt="Barbeiro Lucas" class="barbeiro-img">
-                <h3>Lucas Santos</h3>
-                <p>Especialidade: Corte Feminino e Masculino</p>
-                <p>Atende a Domicílio: Sim</p>
-                <p>Avaliação: 4.9/5</p>
-                <p>Serviços: Corte, Barba, Tratamento Capilar</p>
-                <p>Localização: Belo Horizonte - MG</p>
-                <a href="#agendar" class="btn-cta">Agendar Corte</a>
-                <a href="https://www.google.com/maps?q=Belo+Horizonte,+MG" class="btn-location" target="_blank">Ver Localização</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <p>© 2023 Barbearia Estilo. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="js/script.js"></script>
+    <script>
+        // Carregar dados do usuário
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                document.getElementById('userName').textContent = user.nome;
+                if(user.foto_perfil) {
+                    document.getElementById('profileImage').src = user.foto_perfil;
+                }
+            }
+        });
+
+        // Carregar barbeiros
+        async function loadBarbeiros() {
+            try {
+                const response = await fetch('http://localhost:3000/api/barbeiros');
+                
+                // Verificar se a resposta é JSON
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new Error('Resposta inválida do servidor');
+                }
+
+                const barbeiros = await response.json();
+
+                if (!response.ok) throw new Error(barbeiros.message || 'Erro ao carregar barbeiros');
+
+                const container = document.getElementById('barbeirosContainer');
+                container.innerHTML = '';
+
+                barbeiros.forEach(barbeiro => {
+                    const card = document.createElement('div');
+                    card.className = 'barbeiro-card';
+                    card.innerHTML = `
+                        <img src="${barbeiro.foto_perfil || 'assets/default-barber.jpg'}" 
+                             alt="${barbeiro.nome}" 
+                             class="barbeiro-img">
+                        <h3>${barbeiro.nome}</h3>
+                        <p>Especialidade: ${barbeiro.especialidades?.join(', ') || 'Nenhuma'}</p>
+                        <p>Atende a Domicílio: ${barbeiro.atende_domicilio ? 'Sim' : 'Não'}</p>
+                        <p>Serviços: ${barbeiro.servicos_oferecidos?.join(', ') || 'Nenhum'}</p>
+                        <p>Localização: ${barbeiro.localizacao || 'Não informada'}</p>
+                        <button class="btn-cta" onclick="agendarBarbeiro('${barbeiro.id}')">
+                            Agendar Corte
+                        </button>
+                        <a href="https://www.google.com/maps?q=${encodeURIComponent(barbeiro.localizacao)}" 
+                           class="btn-location" 
+                           target="_blank">
+                            Ver Localização
+                        </a>
+                    `;
+                    container.appendChild(card);
+                });
+
+            } catch (error) {
+                document.getElementById('barbeirosContainer').innerHTML = `
+                    <div class="error">Erro: ${error.message}</div>
+                `;
+                console.error('Erro ao carregar barbeiros:', error);
+            }
+        }
+
+        function agendarBarbeiro(barbeiroId) {
+            localStorage.setItem('selectedBarber', barbeiroId);
+            window.location.href = 'agendamento.html';
+        }
+
+        // Iniciar carregamento
+        loadBarbeiros();
+    </script>
 </body>
 </html>
